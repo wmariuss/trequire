@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pylint = "*"
+e1839a8 = {editable = true,path = "."}
+invoke = "*"
+
+[packages]
+boto3 = "==1.9.122"
+cerberus = "==1.2"
+pyyaml = "*"
+click = "==7.0"
+setuptools = "*"
+termcolor = "==1.1.0"
+
+[requires]
+python_version = "3.6"

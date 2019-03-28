@@ -1,0 +1,12 @@
+requirements:
+  profile: default
+  # add:
+  #   buckets:
+  #     - treq-tool-test
+  #   dynamodb:
+  #     - treq-tool-test
+  remove:
+    buckets:
+      - treq-tool-test
+    dynamodb:
+      - treq-tool-test
