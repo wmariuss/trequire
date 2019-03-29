@@ -20,13 +20,15 @@ setup(
     extras_require={
         'click': ['click>=7.0']},
     classifiers=[
-        'Environment :: Tools',
-        'Intended Audience :: Operations',
-        'License :: MIT License',
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Console',
+        'Environment :: Other Environment',
+        'Intended Audience :: Developers',
+        'Intended Audience :: Information Technology',
+        'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3.x',
-        'Topic :: Software Development :: Libraries :: Python Modules',
+        'Programming Language :: Python :: 3 :: Only',
+        'Topic :: Software Development :: Build Tools',
     ],
     entry_points='''
         [console_scripts]
