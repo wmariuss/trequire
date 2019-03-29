@@ -1,4 +1,5 @@
 import click
+from termcolor import colored
 
 from treq.validation import ConfigValidation
 from treq.aws import ManageeRequirements
@@ -48,18 +49,18 @@ def run(file):
                 if bucket not in s3_buckets_list:
                     create_bucket = manage.bucket(bucket)
                     if 'created' in create_bucket:
-                        click.echo('[{}] s3 bucket created'.format(bucket))
+                        click.echo(colored('[{}] s3 bucket created'.format(bucket), 'green'))
                 else:
-                    click.echo('[{}] bucket already exists'.format(bucket))
+                    click.echo(colored('[{}] bucket already exists'.format(bucket), 'yellow'))
 
             # Create dynamodb table(s)
             for table in tables_list_add:
                 if table not in dynamodb_tables_list:
                     create_dynamodb_table = manage.dynamodb(table)
                     if 'created' in create_dynamodb_table:
-                        click.echo('[{}] dynamodb table created'.format(table))
+                        click.echo(colored('[{}] dynamodb table created'.format(table), 'green'))
                 else:
-                    click.echo('[{}] dynamodb table already exists'.format(table))
+                    click.echo(colored('[{}] dynamodb table already exists'.format(table), 'yellow'))
 
         if list_to_remove:
             buckets_list_remove = list_to_remove.get('buckets')
@@ -70,15 +71,15 @@ def run(file):
                 if bucket in s3_buckets_list:
                     delete_bucket = manage.remove_bucket(bucket)
                     if 'removed' in delete_bucket.lower():
-                        click.echo('[{}] s3 bucket removed'.format(bucket))
+                        click.echo(colored('[{}] s3 bucket removed'.format(bucket), 'yellow'))
                 else:
-                    click.echo('[{}] s3 bucket is already removed or not exists'.format(bucket))
+                    click.echo(colored('[{}] s3 bucket is already removed or not exists'.format(bucket), 'yellow'))
 
             # Delete dynamodb table(s)
             for table in tables_list_remove:
                 if table in dynamodb_tables_list:
                     delete_table = manage.remove_dynamodb_table(table)
                     if 'removed' in delete_table.lower():
-                        click.echo('[{}] dynamodb table removed'.format(table))
+                        click.echo(colored('[{}] dynamodb table removed'.format(table), 'yellow'))
                 else:
-                    click.echo('[{}] dynamodb table is already removed or not exists'.format(table))
+                    click.echo(colored('[{}] dynamodb table is already removed or not exists'.format(table), 'yellow'))

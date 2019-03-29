@@ -5,6 +5,7 @@ Manage backend resources for terraform states (`.tfstate`).
 ## Requirements
 
 * `Python >= 3.6.x`
+* `aws credentials`
 
 ## Install
 
@@ -30,7 +31,7 @@ Example config - parameters
 
 ```yaml
 requirements: # Required
-  profile : development # Profile from your AWS Credentials file. This is required, if this is not specified default profile is used
+  profile : development # Profile from your AWS credentials file. This is required, if this is not specified default profile is used
   add: # This is optional
     buckets: # Required if add key is specified
       - bucket1
