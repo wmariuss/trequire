@@ -9,7 +9,7 @@ Manage backend resources for terraform states (`.tfstate`). `trequire` means ter
 
 ## Install
 
-* `pip install trequire`
+* `pip install trequire` or using this repo `pip install .`
 
 Development
 
