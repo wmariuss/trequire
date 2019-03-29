@@ -1,10 +1,10 @@
 # treq
 
-Manage backend resources for terraform states (`.tfstate`).
+Manage backend resources for terraform states (`.tfstate`). `treq` means terraform requirements.
 
 ## Requirements
 
-* `Python >= 3.6.x`
+* `Python >= 3.6.x` by `pyenv`
 * `aws credentials`
 
 ## Install
@@ -16,11 +16,6 @@ Development
 * `pip install pipenv`
 * `pipenv install --dev`
 * `pipenv run treq --help` or `pipenv shell`
-
-Build executable
-
-* Run `invoke build`
-* Check `bin` dir for executable. This is built based on your os
 
 ## Usage
 
