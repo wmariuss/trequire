@@ -9,4 +9,4 @@ RUN echo "LC_ALL=en_US.UTF-8" > /etc/default/locale && \
 # Add executable
 ADD bin/treq /bin/treq
 
-CMD ["/bin/treq", "--help"]
+ENTRYPOINT ["/bin/treq"]
