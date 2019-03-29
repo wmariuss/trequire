@@ -1,6 +1,6 @@
 import yaml
 from cerberus import Validator
-from treq.exceptions import ConfigValidationExceptions
+from trequire.exceptions import ConfigValidationExceptions
 
 class ConfigValidation(object):
     def __init__(self):

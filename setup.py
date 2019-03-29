@@ -1,14 +1,14 @@
 from setuptools import setup
 
 setup(
-    name='treq',
+    name='trequire',
     version='0.1.0',
     author='Marius Stanca',
     author_email=['me@marius.xyz'],
-    url='http://marius.xyz',
+    url='https://github.com/wmariuss/trequire.git',
     license='MIT',
     description='Create backend resources for Terraform states',
-    packages=['treq'],
+    packages=['trequire'],
     long_description=open('README.md').read(),
     include_package_data=True,
     package_data={'': ['README.md']},
@@ -30,6 +30,6 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        treq=treq.cli:cli
+        trequire=trequire.cli:cli
     '''
 )

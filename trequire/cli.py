@@ -1,8 +1,8 @@
 import click
 from termcolor import colored
 
-from treq.validation import ConfigValidation
-from treq.aws import ManageeRequirements
+from trequire.validation import ConfigValidation
+from trequire.aws import ManageeRequirements
 
 
 def get_data(file):

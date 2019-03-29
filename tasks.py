@@ -1,7 +1,7 @@
 import os
 from invoke import task
 
-project_name = 'treq'
+project_name = 'trequire'
 exec_file = "{}.pex".format(project_name)
 exec_dir = "bin"
 

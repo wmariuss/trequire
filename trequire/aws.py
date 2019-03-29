@@ -1,6 +1,6 @@
 import boto3
 
-from treq.exceptions import GeneralExceptions
+from trequire.exceptions import GeneralExceptions
 
 class ManageeRequirements(object):
     def __init__(self, session):

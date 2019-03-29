@@ -1,6 +1,6 @@
-# treq
+# trequire
 
-Manage backend resources for terraform states (`.tfstate`). `treq` means terraform requirements.
+Manage backend resources for terraform states (`.tfstate`). `trequire` means terraform requirements.
 
 ## Requirements
 
@@ -9,18 +9,18 @@ Manage backend resources for terraform states (`.tfstate`). `treq` means terrafo
 
 ## Install
 
-* `pip install treq`
+* `pip install trequire`
 
 Development
 
 * `pip install pipenv`
 * `pipenv install --dev`
-* `pipenv run treq --help` or `pipenv shell`
+* `pipenv run trequire --help` or `pipenv shell`
 
 ## Usage
 
 * Create a config same as `example_config.yaml` file or follow example config bellow
-* Run `treq run -f your_config_file.yaml`
+* Run `trequire run -f your_config_file.yaml`
 
 Example config - parameters
 
