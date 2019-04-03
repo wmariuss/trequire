@@ -18,13 +18,13 @@ def get_data(file):
 @click.group()
 @click.version_option()
 def cli():
-    '''
-    Manage backend resources for Terraform states
+    '''Manage backend resources for Terraform states
     '''
     pass
 
-@cli.command()
-@click.option('--file', '-f', type=click.Path(exists=True), help='treq config file')
+
+@cli.command(help='Manage resources based on config file')
+@click.option('--file', '-f', type=click.Path(exists=True), help='trequire config file')
 def run(file):
     '''Manage resources based on config file
     '''

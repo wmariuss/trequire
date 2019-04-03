@@ -5,15 +5,18 @@ verify_ssl = true
 
 [dev-packages]
 pylint = "*"
-e1839a8 = {editable = true,path = "."}
 invoke = "*"
+wheel = "==0.30.0"
+pex = "==1.6.5"
+setuptools = "*"
+trequire = {editable = true,path = "."}
+tox = "*"
 
 [packages]
 boto3 = "==1.9.122"
 cerberus = "==1.2"
-pyyaml = "*"
+pyyaml = "==5.1"
 click = "==7.0"
-setuptools = "*"
 termcolor = "==1.1.0"
 
 [requires]

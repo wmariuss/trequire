@@ -1,10 +1,4 @@
 from setuptools import setup
-from os import path
-
-this_directory = path.abspath(path.dirname(__file__))
-
-with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
 
 setup(
     name='trequire',
@@ -15,7 +9,7 @@ setup(
     license='MIT',
     description='Create backend resources for Terraform states',
     packages=['trequire'],
-    long_description=long_description,
+    long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     include_package_data=True,
     package_data={'': ['README.md']},
@@ -23,6 +17,7 @@ setup(
                       'cerberus==1.2',
                       'pyyaml',
                       'boto3==1.9.122',
+                      'botocore==1.12.127',
                       'termcolor==1.1.0'],
     extras_require={
         'click': ['click>=7.0']},
@@ -39,6 +34,6 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        trequire=trequire.cli:cli
+        trequire=trequire.main:cli
     '''
 )

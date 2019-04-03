@@ -4,18 +4,18 @@ Manage backend resources for terraform states (`.tfstate`). `trequire` means ter
 
 ## Requirements
 
-* `Python >= 3.6.x` by `pyenv`
+* `Python >= 3.x` by `pyenv`
 * `aws credentials`
 
 ## Install
 
-* `pip install trequire` or using this repo `pip install .`
+For easy deployment this is built as executable. You can download it from [release](https://github.com/wmariuss/trequire/releases) section.
 
 Development
 
 * `pip install pipenv`
 * `pipenv install --dev`
-* `pipenv run trequire --help` or `pipenv shell`
+* `pipenv run trequire --help` or `pipenv shell` and execute `trequire --help`
 
 ## Usage
 

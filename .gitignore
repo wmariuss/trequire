@@ -1,9 +1,14 @@
 # Local files
 .DS_Store
-*.vscode
+.vscode
 env.sh
 *.whl
 *.pex
+
+# Pants
+.pants.d
+.pids
+.pants.workdir.file_lock
 
 ### Python ###
 # Byte-compiled / optimized / DLL files
