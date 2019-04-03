@@ -17,6 +17,10 @@ Development
 * `pipenv install --dev`
 * `pipenv run trequire --help` or `pipenv shell` and execute `trequire --help`
 
+Build executable
+
+* `pipenv run tox -e package`
+
 ## Usage
 
 * Create a config same as `example_config.yaml` file or follow example config bellow
