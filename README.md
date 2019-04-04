@@ -23,7 +23,7 @@ Build executable
 
 ## Usage
 
-* Create a config same as `example_config.yaml` file or follow example config bellow
+* Create a config same as example file from [examples](examples) dir or follow example config bellow
 * Run `trequire run -f your_config_file.yaml`
 
 Example config - parameters

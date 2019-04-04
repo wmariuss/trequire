@@ -30,6 +30,8 @@ class ConfigValidation(object):
                     type: list
                 dynamodb:
                     type: list
+                user:
+                    type: string
             remove:
               type: dict
               schema:
@@ -37,6 +39,8 @@ class ConfigValidation(object):
                     type: list
                 dynamodb:
                     type: list
+                user:
+                    type: string
         '''
 
         schema_config_load = yaml.load(schema_config, Loader=yaml.FullLoader)
