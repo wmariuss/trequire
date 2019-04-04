@@ -7,6 +7,6 @@ RUN echo "LC_ALL=en_US.UTF-8" > /etc/default/locale && \
     echo "LANG=en_US.UTF-8" >> /etc/default/locale
 
 # Add executable
-ADD bin/trequire /bin/trequire
+ADD dist/trequire.pex /bin/trequire
 
 ENTRYPOINT ["/bin/trequire"]
