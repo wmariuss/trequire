@@ -4,7 +4,7 @@ Manage backend resources for terraform states (`.tfstate`). `trequire` means ter
 
 ## Requirements
 
-* `Python >= 3.x` by `pyenv`
+* `Python >= 3.5` by `pyenv`
 * `aws credentials`
 
 ## Install
@@ -40,6 +40,7 @@ requirements: # Required
       - table1
       - table2
       - ...
+    user: test-user
   remove: # This is optional. If this not specified nothing is happening
     buckets: # Required if remove key is specified
       - bucket1
@@ -49,6 +50,7 @@ requirements: # Required
       - table2
       - table2
       - ...
+    user: test-user
 ```
 
 ## Tests
