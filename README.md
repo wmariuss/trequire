@@ -4,7 +4,7 @@ Manage backend resources for terraform states (`.tfstate`). `trequire` means ter
 
 ## Requirements
 
-* `Python >= 3.5` by `pyenv`
+* `Python >= 3.6`
 * `aws credentials`
 
 ## Install
