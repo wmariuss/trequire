@@ -5,7 +5,7 @@ Manage backend resources for terraform states (`.tfstate`). `trequire` means ter
 ## Requirements
 
 * `Python >= 3.6`
-* `aws credentials`
+*  `aws credentials` file
 
 ## Install
 
@@ -33,24 +33,21 @@ requirements: # Required
   profile : development # Profile from your AWS credentials file. This is required, if this is not specified default profile is used
   add: # This is optional
     buckets: # Required if add key is specified
-      - bucket1
-      - bucket2
-      - ...
+      - terraform-dev
+      - terraform-staging
+      - terraform-prod
     dynamodb: # Required if add key is specified
-      - table1
-      - table2
-      - ...
-    user: test-user
+      - terraform-states
+      - terraform-dev
+    user: terraform-user # Optional, only if you want a user dedicated for Terraform
   remove: # This is optional. If this not specified nothing is happening
     buckets: # Required if remove key is specified
-      - bucket1
-      - bucket2
-      - ...
+      - terraform-dev
+      - terraform-staging
     dynamodb: # Required if remove key is specified
-      - table2
-      - table2
-      - ...
-    user: test-user
+      - terraform-dev
+      - terraform-staging
+    user: terraform-user
 ```
 
 ## Tests
