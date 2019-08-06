@@ -31,6 +31,7 @@ Example config - parameters
 ```yaml
 requirements: # Required
   profile : development # Profile from your AWS credentials file. This is required, if this is not specified default profile is used
+  region: us-east-2 # Default is us-east-1
   add: # This is optional
     buckets: # Required if add key is specified
       - terraform-dev
