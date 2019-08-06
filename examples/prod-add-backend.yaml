@@ -1,0 +1,9 @@
+requirements:
+  profile: default
+  region: us-east-2
+  add:
+    buckets:
+      - prod-terraform-states
+    dynamodb:
+      - prod-terraform-lock-states
+    user: terraform-aws-api

@@ -1,0 +1,9 @@
+requirements:
+  profile: default
+  region: us-east-2
+  remove:
+    buckets:
+      - dev-terraform-states
+    dynamodb:
+      - dev-terraform-lock-states
+    user: terraform

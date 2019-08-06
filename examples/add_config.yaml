@@ -1,8 +1,0 @@
-requirements:
-  profile: default
-  add:
-    buckets:
-      - trequire-tool-test
-    dynamodb:
-      - trequire-tool-test
-    user: trequire-tool-test

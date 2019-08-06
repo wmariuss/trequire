@@ -32,11 +32,12 @@ def run(file):
         data = get_data(file)
         requirements = data.get('requirements')
         profile = requirements.get('profile', 'default')
+        region = requirements.get('region', 'us-east-1')
 
         list_to_add = requirements.get('add', '')
         list_to_remove = requirements.get('remove', '')
 
-        manage = ManageRequirements(profile)
+        manage = ManageRequirements(profile, region)
         s3_buckets_list = manage.get_buckets
         dynamodb_tables_list = manage.get_dynamodb_tables
         users_list = manage.iam_users()
@@ -49,9 +50,8 @@ def run(file):
             # Create s3 bucket(s)
             if buckets_list_add:
                 for bucket in buckets_list_add:
-                    create_bucket = manage.bucket(bucket)
                     if bucket not in s3_buckets_list:
-                        # create_bucket = manage.bucket(bucket)
+                        create_bucket = manage.bucket(bucket)
                         if 'created' in create_bucket:
                             click.echo(colored('[{}] s3 bucket created'.format(bucket), 'green'))
                     else:

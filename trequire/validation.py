@@ -2,6 +2,7 @@ import yaml
 from cerberus import Validator
 from trequire.exceptions import ConfigValidationExceptions
 
+
 class ConfigValidation(object):
     def __init__(self):
         pass
@@ -22,6 +23,8 @@ class ConfigValidation(object):
           type: dict
           schema:
             profile:
+              type: string
+            region:
               type: string
             add:
               type: dict

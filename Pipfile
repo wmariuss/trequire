@@ -11,14 +11,16 @@ pex = "==1.6.5"
 setuptools = "*"
 trequire = {editable = true,path = "."}
 tox = "*"
+pep8 = "*"
+mypy = "*"
 
 [packages]
 boto3 = "==1.9.122"
-cerberus = "==1.2"
 pyyaml = "==5.1"
 click = "==7.0"
 termcolor = "==1.1.0"
 urllib3 = ">=1.24.2"
+botocore = "==1.12.127"
 
 [requires]
 python_version = "3.6"
