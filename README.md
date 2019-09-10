@@ -1,5 +1,8 @@
 # trequire
 
+[![Tag](https://img.shields.io/github/v/tag/wmariuss/trequire)](https://github.com/wmariuss/trequire/tags)
+[![License](https://img.shields.io/github/license/wmariuss/trequire)](https://github.com/wmariuss/trequre/blob/master/LICENSE)
+
 Manage backend resources for terraform states (`.tfstate`). `trequire` means terraform requirements.
 
 ## Requirements
