@@ -1,5 +1,6 @@
 # trequire
 
+[![Build Status](https://travis-ci.com/wmariuss/trequire.svg?branch=master)](https://travis-ci.com/wmariuss/trequire)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/wmariuss/trequire)
 [![Tag](https://img.shields.io/github/v/tag/wmariuss/trequire)](https://github.com/wmariuss/trequire/tags)
 [![License](https://img.shields.io/github/license/wmariuss/trequire)](https://github.com/wmariuss/trequre/blob/master/LICENSE)
