@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/wmariuss/trequire.svg?branch=master)](https://travis-ci.com/wmariuss/trequire)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/wmariuss/trequire)](https://github.com/wmariuss/trequire/releases)
 [![Tag](https://img.shields.io/github/v/tag/wmariuss/trequire)](https://github.com/wmariuss/trequire/tags)
-[![License](https://img.shields.io/github/license/wmariuss/trequire)](https://github.com/wmariuss/trequre/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/wmariuss/trequire)](https://github.com/wmariuss/trequire/blob/master/LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Manage backend resources for terraform states (`.tfstate`). `trequire` means terraform requirements.
