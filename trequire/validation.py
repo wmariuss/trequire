@@ -9,7 +9,7 @@ class ConfigValidation(object):
 
     def parse_config(self, file):
         configs = None
-        with open(file, 'r') as cfg:
+        with open(file, "r") as cfg:
             try:
                 content = yaml.load(cfg, Loader=yaml.FullLoader)
                 configs = content
@@ -18,7 +18,7 @@ class ConfigValidation(object):
         return configs
 
     def data_validation(self, data={}):
-        schema_config = '''
+        schema_config = """
         requirements:
           type: dict
           schema:
@@ -44,7 +44,7 @@ class ConfigValidation(object):
                     type: list
                 user:
                     type: string
-        '''
+        """
 
         schema_config_load = yaml.load(schema_config, Loader=yaml.FullLoader)
         content = data
@@ -52,6 +52,8 @@ class ConfigValidation(object):
         status = v.validate(content)
 
         if not status:
-            raise ConfigValidationExceptions("Invalid syntax: {0}".format(str((v.errors))))
+            raise ConfigValidationExceptions(
+                "Invalid syntax: {0}".format(str((v.errors)))
+            )
         else:
             return status

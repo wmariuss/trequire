@@ -17,11 +17,11 @@ class ManageRequirements(object):
     def __init__(self, profile, region):
         session = SessionService(profile, region)
 
-        self.s3_res = session.resource('s3')
-        self.s3_client = session.resource('s3', client=True)
-        self.dynamodb_res = session.resource('dynamodb')
-        self.dynamodb_client = session.resource('dynamodb', client=True)
-        self.iam_client = session.resource('iam', client=True)
+        self.s3_res = session.resource("s3")
+        self.s3_client = session.resource("s3", client=True)
+        self.dynamodb_res = session.resource("dynamodb")
+        self.dynamodb_client = session.resource("dynamodb", client=True)
+        self.iam_client = session.resource("iam", client=True)
         self.region = region
 
     def _enable_bucket_versioning(self, name):
@@ -29,21 +29,17 @@ class ManageRequirements(object):
         versioning.enable()
 
     def bucket(self, name):
-        '''
+        """
         Create s3 bucket
-        '''
+        """
         status = None
-        tag_list = {
-            'TagSet': [{
-                'Key': 'Created by',
-                'Value': 'trequire tool'
-            }]
-        }
+        tag_list = {"TagSet": [{"Key": "Created by", "Value": "trequire tool"}]}
 
         try:
-            self.s3_client.create_bucket(Bucket=name,
-                                         CreateBucketConfiguration={'LocationConstraint': self.region})
-            status = '{} bucket created'.format(name)
+            self.s3_client.create_bucket(
+                Bucket=name, CreateBucketConfiguration={"LocationConstraint": self.region}
+            )
+            status = "{} bucket created".format(name)
         except Exception as exc:
             raise GeneralExceptions(exc)
         else:
@@ -54,50 +50,33 @@ class ManageRequirements(object):
             self.s3_client.put_bucket_encryption(
                 Bucket=name,
                 ServerSideEncryptionConfiguration={
-                    'Rules': [{
-                        'ApplyServerSideEncryptionByDefault': {
-                            'SSEAlgorithm': 'AES256',
-                        }
-                    }]
-                }
+                    "Rules": [
+                        {"ApplyServerSideEncryptionByDefault": {"SSEAlgorithm": "AES256"}}
+                    ]
+                },
             )
             self.s3_client.put_bucket_tagging(Bucket=name, Tagging=tag_list)
         return status
 
     def dynamodb(self, name):
-        '''
+        """
         Create dynamodb table
-        '''
-        tag_list = [{
-            'Key': 'Created by',
-            'Value': 'trequire tool'
-        }]
+        """
+        tag_list = [{"Key": "Created by", "Value": "trequire tool"}]
         try:
             table = self.dynamodb_res.create_table(
                 TableName=name,
-                KeySchema=[{
-                        'AttributeName': 'LockID',
-                        'KeyType': 'HASH'
-                    },
-                ],
-                AttributeDefinitions=[{
-                        'AttributeName': 'LockID',
-                        'AttributeType': 'S'
-                    },
-                ],
-                ProvisionedThroughput={
-                    'ReadCapacityUnits': 20,
-                    'WriteCapacityUnits': 20
-                }
+                KeySchema=[{"AttributeName": "LockID", "KeyType": "HASH"}],
+                AttributeDefinitions=[{"AttributeName": "LockID", "AttributeType": "S"}],
+                ProvisionedThroughput={"ReadCapacityUnits": 20, "WriteCapacityUnits": 20},
             )
 
-            table.meta.client.get_waiter('table_exists').wait(TableName=name)
-            self.dynamodb_client.tag_resource(ResourceArn=table.table_arn,
-                                              Tags=tag_list)
-            return '{} table created'.format(name)
+            table.meta.client.get_waiter("table_exists").wait(TableName=name)
+            self.dynamodb_client.tag_resource(ResourceArn=table.table_arn, Tags=tag_list)
+            return "{} table created".format(name)
         except Exception as e:
-            if 'Cannot create preexisting table' in str(e):
-                return '{} table already exists'.format(name)
+            if "Cannot create preexisting table" in str(e):
+                return "{} table already exists".format(name)
             else:
                 raise e
 
@@ -124,7 +103,7 @@ class ManageRequirements(object):
         status = None
         try:
             self.s3_client.delete_bucket(Bucket=name)
-            status = 'Removed'
+            status = "Removed"
         except Exception as exc:
             raise GeneralExceptions(exc)
 
@@ -134,7 +113,7 @@ class ManageRequirements(object):
         status = None
         try:
             self.dynamodb_client.delete_table(TableName=name)
-            status = 'Removed'
+            status = "Removed"
         except Exception as exc:
             raise GeneralExceptions(exc)
 
@@ -143,27 +122,22 @@ class ManageRequirements(object):
     def iam_users(self):
         users_list = {}
 
-        paginator = self.iam_client.get_paginator('list_users')
+        paginator = self.iam_client.get_paginator("list_users")
         for users in paginator.paginate():
-            for user in users['Users']:
-                if user['UserName'] not in users_list:
-                    users_list.update({
-                        user['UserName']: user['UserId']
-                        })
+            for user in users["Users"]:
+                if user["UserName"] not in users_list:
+                    users_list.update({user["UserName"]: user["UserId"]})
 
         return users_list
 
     def add_user(self, name):
-        tags_list = [{
-            'Key': 'Created by',
-            'Value': 'trequire tool'
-        }]
-        status = 'Success'
+        tags_list = [{"Key": "Created by", "Value": "trequire tool"}]
+        status = "Success"
 
         try:
             self.iam_client.create_user(UserName=name, Tags=tags_list)
         except Exception as e:
-            status = 'Failed'
+            status = "Failed"
             raise e
 
         return status
@@ -173,26 +147,30 @@ class ManageRequirements(object):
         try:
             create_access_key = self.iam_client.create_access_key(UserName=name)
             for keys in create_access_key.values():
-                if 'SecretAccessKey' in keys:
-                    keys_list.update({
-                        'access_key': keys['AccessKeyId'],
-                        'secret_key': keys['SecretAccessKey']
-                    })
+                if "SecretAccessKey" in keys:
+                    keys_list.update(
+                        {
+                            "access_key": keys["AccessKeyId"],
+                            "secret_key": keys["SecretAccessKey"],
+                        }
+                    )
         except Exception as e:
             raise e
 
         return keys_list
 
     def remove_user(self, name):
-        status = 'Failed'
+        status = "Failed"
         get_access_ids = self._get_access_id(name)
 
         try:
             if len(get_access_ids) > 0:
                 for access_id in get_access_ids:
-                    self.iam_client.delete_access_key(UserName=name, AccessKeyId=access_id)
+                    self.iam_client.delete_access_key(
+                        UserName=name, AccessKeyId=access_id
+                    )
             self.iam_client.delete_user(UserName=name)
-            status = 'Success'
+            status = "Success"
         except Exception as e:
             raise e
 
@@ -202,7 +180,7 @@ class ManageRequirements(object):
         access_keys = self.iam_client.list_access_keys(UserName=user)
         access_id_list = []
 
-        for access_info in access_keys['AccessKeyMetadata']:
-            access_id_list.append(access_info['AccessKeyId'])
+        for access_info in access_keys["AccessKeyMetadata"]:
+            access_id_list.append(access_info["AccessKeyId"])
 
         return access_id_list
